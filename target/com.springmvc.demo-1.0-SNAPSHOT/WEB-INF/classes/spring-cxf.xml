@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:jaxrs="http://cxf.apache.org/jaxrs"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-2.0.xsd
+   http://cxf.apache.org/jaxrs http://cxf.apache.org/schemas/jaxrs.xsd">
+
+    <!--
+
+        注意这里的jaxrs命名空间需要大家手动添加
+
+    -->
+
+    <!-- 发布webservice -->
+    <bean id="serviceBean" class="com.demo.service.MyServiceImpl"/>
+    <jaxrs:server id="userService"  address="/myservice">
+        <jaxrs:serviceBeans>
+            <ref bean="serviceBean"/>
+        </jaxrs:serviceBeans>
+    </jaxrs:server>
+
+</beans>
